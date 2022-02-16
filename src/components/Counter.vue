@@ -2,8 +2,8 @@
   <h2>Counter</h2>
   <p>{{ counter }} <sup>2</sup> = {{ squaredCounter }}</p>
   <div>
-    <button v-on:click="increase()">+1</button>
-    <button v-on:click="decrease()">-1</button>
+    <button @click="increase()">+1</button>
+    <button @click="decrease()">-1</button>
   </div>
 </template>
 
