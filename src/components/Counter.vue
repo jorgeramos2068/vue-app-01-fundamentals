@@ -15,7 +15,9 @@ export default {
     start: {
       type: Number,
       default: 100,
-      required: true,
+      validator(value) {
+        return value > 0;
+      },
     },
   },
   data() {
