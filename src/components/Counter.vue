@@ -1,5 +1,5 @@
 <template>
-  <h2>Counter</h2>
+  <h2>{{ formattedTitle }}</h2>
   <p>{{ counter }} <sup>2</sup> = {{ squaredCounter }}</p>
   <div>
     <button @click="increase()">+1</button>
@@ -10,9 +10,17 @@
 <script>
 export default {
   name: 'Counter',
+  props: {
+    title: String,
+    start: {
+      type: Number,
+      default: 100,
+      required: true,
+    },
+  },
   data() {
     return {
-      counter: 5,
+      counter: this.start,
     };
   },
   methods: {
@@ -27,6 +35,9 @@ export default {
     squaredCounter() {
       console.log('Computed counter');
       return this.counter * this.counter;
+    },
+    formattedTitle() {
+      return this.title || 'Counter';
     },
   },
 };
