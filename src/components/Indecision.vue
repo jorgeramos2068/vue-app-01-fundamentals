@@ -1,12 +1,14 @@
 <template>
-  <img v-if="image" :src="image" alt="bg" />
-  <div class="bg-dark"></div>
-  <div class="indecision-container">
-    <input type="text" placeholder="Ask me a question" v-model="question" />
-    <p>Remember to finish with a ?</p>
-    <div v-if="isValidQuestion">
-      <h2>{{ question }}</h2>
-      <h1>{{ answer }}</h1>
+  <div>
+    <img v-if="image" :src="image" alt="bg" />
+    <div class="bg-dark"></div>
+    <div class="indecision-container">
+      <input type="text" placeholder="Ask me a question" v-model="question" />
+      <p>Remember to finish with a ?</p>
+      <div v-if="isValidQuestion">
+        <h2>{{ question }}</h2>
+        <h1>{{ answer }}</h1>
+      </div>
     </div>
   </div>
 </template>
@@ -32,6 +34,8 @@ export default {
         this.answer = answer;
         this.image = image;
       } catch (err) {
+        this.answer = 'Error while loading...';
+        this.img = null;
         console.error(err);
       }
     },
@@ -39,6 +43,7 @@ export default {
   watch: {
     question(value, oldValue) {
       this.isValidQuestion = false;
+      console.log({ value });
       if (!value.endsWith('?')) {
         return;
       }
