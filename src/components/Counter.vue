@@ -1,9 +1,12 @@
 <template>
-  <h2>{{ formattedTitle }}</h2>
-  <p>{{ counter }} <sup>2</sup> = {{ squaredCounter }}</p>
   <div>
-    <button @click="increase()">+1</button>
-    <button @click="decrease()">-1</button>
+    <h2>{{ formattedTitle }}</h2>
+    <p>{{ counter }} <sup>2</sup> = {{ squaredCounter }}</p>
+    <p data-testid="counter">{{ counter }}</p>
+    <div>
+      <button @click="increase()">+1</button>
+      <button @click="decrease()">-1</button>
+    </div>
   </div>
 </template>
 
@@ -35,7 +38,6 @@ export default {
   },
   computed: {
     squaredCounter() {
-      console.log('Computed counter');
       return this.counter * this.counter;
     },
     formattedTitle() {
